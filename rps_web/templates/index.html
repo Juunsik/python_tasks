@@ -26,11 +26,20 @@
 
     {% if context.prev_result %}
     <div class="border border-secondary-subtle rounded-2 p-2 mt-2 mb-2">
-      <span>{{context.prev_result}}</span>
+      <span>{{context.prev_result[0]}}</span>
     </div>
     {% endif %}
 
-    <div>
+    {% if prev_result %}
+    <h2>Previous Result</h2>
+    <ul>
+        {% for result in prev_result %}
+            <li>{{ result }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <div class='mb-3'>
       <span class="btn btn-primary">승: {{ context.win }}</span>
       <span class="btn btn-primary">패: {{ context.lose }}</span>
       <span class="btn btn-primary">무승부: {{ context.draw }}</span>

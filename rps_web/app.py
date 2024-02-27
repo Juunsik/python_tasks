@@ -46,10 +46,11 @@ def judgment(computer, user):
 @app.route("/")
 def home():
     score_list = ScoreBoard.query.all()
-    prev_result = ScoreBoard.query.order_by(ScoreBoard.id.desc()).limit(1).all()
+    prev_result = ScoreBoard.query.order_by(ScoreBoard.id.desc()).limit(1)
     win = len(ScoreBoard.query.filter_by(result="이겼습니다").all())
     lose = len(ScoreBoard.query.filter_by(result="졌습니다").all())
     draw = len(ScoreBoard.query.filter_by(result="비겼습니다").all())
+    print(type(prev_result))
 
     record = {
         "win": win,
@@ -57,7 +58,7 @@ def home():
         "draw": draw,
         "prev_result": prev_result,
     }
-
+    
     return render_template("index.html", data=score_list, context=record)
 
 
