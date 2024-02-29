@@ -50,7 +50,6 @@ def home():
     win = len(ScoreBoard.query.filter_by(result="이겼습니다").all())
     lose = len(ScoreBoard.query.filter_by(result="졌습니다").all())
     draw = len(ScoreBoard.query.filter_by(result="비겼습니다").all())
-    print(type(prev_result))
 
     record = {
         "win": win,
